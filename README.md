@@ -1,7 +1,3 @@
-Absolutely! Here’s a **professional README** you can use for your GitHub repository for this ESP32 Car Control project:
-
----
-
 # ESP32 Car Control – Web & API Interface
 
 **Author:** Zilani Khan
@@ -105,26 +101,102 @@ http://192.168.68.100/
 
 Use the buttons and sliders to control movement, speed, and timed rotations.
 
-### REST API (POST + JSON)
+---
 
-Replace `192.168.68.100` with your ESP32 IP. Example cURL commands:
+## REST API (POST + JSON)
 
-**Forward**
+Replace `192.168.68.100` with your ESP32 IP.
 
-```bash
-curl -X POST http://192.168.68.100/api -H "Content-Type: application/json" -d '{"command":"forward"}'
+### API Endpoint
+
+```
+POST http://192.168.68.100/api
+Content-Type: application/json
+Body: JSON
 ```
 
-**Change Speed**
+---
+
+### ✅ REST API Examples (cURL Commands)
+
+**1. Forward**
 
 ```bash
-curl -X POST http://192.168.68.100/api -H "Content-Type: application/json" -d '{"speed":150}'
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"forward"}'
 ```
 
-**Timed Rotation**
+**2. Backward**
 
 ```bash
-curl -X POST http://192.168.68.100/api -H "Content-Type: application/json" -d '{"timed":{"dir":"l","speed":100,"seconds":2.5}}'
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"backward"}'
+```
+
+**3. Left Turn**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"left"}'
+```
+
+**4. Right Turn**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"right"}'
+```
+
+**5. Stop**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"stop"}'
+```
+
+**6. Change Speed**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"speed":150}'
+```
+
+**7. Timed Rotation (Left 2.5s at speed 100)**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"timed":{"dir":"l","speed":100,"seconds":2.5}}'
+```
+
+**8. Timed Rotation (Right 3s at speed 120)**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"timed":{"dir":"r","speed":120,"seconds":3}}'
+```
+
+**9. Combined Command + Speed**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"command":"forward","speed":200}'
+```
+
+**10. Combined Timed + Speed**
+
+```bash
+curl -X POST http://192.168.68.100/api \
+-H "Content-Type: application/json" \
+-d '{"timed":{"dir":"l","speed":150,"seconds":4},"speed":150}'
 ```
 
 ---
@@ -175,8 +247,4 @@ You can combine `command`, `speed`, and `timed` in one request.
 
 This project is **MIT licensed** – feel free to use and modify it for personal projects.
 
----
 
-I can also **create a ready-to-use `README.md` file with badges, screenshots, and a table of contents** if you want it fully polished for GitHub.
-
-Do you want me to do that next?
